@@ -1,13 +1,97 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Tailwind CSS Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+
+/* Custom buttons */
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors font-medium;
+  }
+  
+  .btn-primary.dark {
+    @apply bg-indigo-500 hover:bg-indigo-600;
+  }
+
+  .btn-outline {
+    @apply px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors font-medium;
+  }
+
+  .btn-outline.dark {
+    @apply border-gray-500 text-gray-200 hover:bg-gray-700;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #eee7e7;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1a202c;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4a5568;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #718096;
+}
+
+/* Custom splide styles */
+.splide__track--draggable {
+  cursor: grab;
+}
+
+.splide__track--dragging {
+  cursor: grabbing;
+}
+
+.splide__slide {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.splide__slide.is-active {
+  opacity: 1;
+}
+/* Force opacity to be 100% in dark mode */
+.dark .bg-gray-800 {
+  background-color: #2d3748 !important; /* This is the hex value of bg-gray-800 */
+  opacity: 1 !important;
 }
